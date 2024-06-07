@@ -1,0 +1,73 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Categoria {
+  TRANSPORTE
+  EDUCACAO
+  SAUDE
+  MORADIA
+  MEIO_AMBIENTE
+  CULTURA_LAZER
+  SEGURANCA
+  EMPREGO
+  SERVICOS_PUBLICOS
+  ASSUNTOS_GERAIS
+}
+
+model Autenticacao {
+  id    Int    @id @default(autoincrement())
+  email String @unique
+  senha String
+}
+
+model Usuario {
+  id        Int     @id @default(autoincrement())
+  nome      String  @db.VarChar(20)
+  sobrenome String  @db.VarChar(20)
+  cpf       String  @db.VarChar(11)
+  admin     Boolean
+
+  pauta Pauta[]
+  voto Voto[]
+}
+
+model Pauta {
+  id        Int       @id @default(autoincrement())
+  assunto   String
+  categoria Categoria
+  sessaoVotacaoId Int      @unique
+  usuarioId       Int
+  createdAt       DateTime @default(now())
+
+  usuario       Usuario        @relation(fields: [usuarioId], references: [id])
+  sessaoVotacao SessaoVotacao?
+}
+
+model SessaoVotacao {
+  id             Int      @id @default(autoincrement())
+  pautaId        Int      @unique
+  dataAbertura   DateTime
+  dataFechamento DateTime
+
+  pauta Pauta @relation(fields: [pautaId], references: [id], onDelete: Cascade)
+}
+
+model Voto{
+  id Int @id @default(autoincrement())
+  cpf String @db.VarChar(11)
+  usuarioId Int?
+
+  usuario Usuario? @relation(fields: [usuarioId], references: [id])
+}
