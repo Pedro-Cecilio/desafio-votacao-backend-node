@@ -1,5 +1,5 @@
 import { Autenticacao, Usuario } from "@prisma/client";
-import { AutenticacaoDto } from "../../dto/autenticacao/autenticacaoDto";
+import { AutenticacaoDto } from "../../dto/autenticacao/AutenticacaoDto";
 import { autenticacaoValidacoes } from "../../validacoes/autenticacao/autenticacaoValidacoes";
 import { autenticacaoRepository } from "../../../repositories/autenticacao";
 import { autenticacaoService } from ".";

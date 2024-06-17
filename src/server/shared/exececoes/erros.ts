@@ -18,3 +18,9 @@ export class NaoEncontradoErro extends VotacaoErro {
         super(message, 404);
     }
 }
+
+export class AutenticacaoErro extends VotacaoErro {
+    constructor(message: string) {
+        super(message, 400);
+    }
+}

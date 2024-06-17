@@ -1,5 +1,5 @@
 import { IsString, Length, IsBoolean, Matches, IsNotEmpty, ValidateNested } from 'class-validator';
-import { AutenticacaoDto } from '../autenticacao/autenticacaoDto';
+import { AutenticacaoDto } from '../autenticacao/AutenticacaoDto';
 import { Type } from 'class-transformer';
 
 export class CriarUsuarioDto {
