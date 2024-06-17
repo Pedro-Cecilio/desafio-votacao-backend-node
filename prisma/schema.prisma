@@ -27,29 +27,33 @@ enum Categoria {
 }
 
 model Autenticacao {
-  id    Int    @id @default(autoincrement())
-  email String @unique
-  senha String
+  id        Int    @id @default(autoincrement())
+  usuarioId Int    @unique
+  email     String @unique
+  senha     String
+
+  usuario Usuario @relation(fields: [usuarioId], references: [id])
 }
 
 model Usuario {
   id        Int     @id @default(autoincrement())
   nome      String  @db.VarChar(20)
   sobrenome String  @db.VarChar(20)
-  cpf       String  @db.VarChar(11)
+  cpf       String  @unique @db.VarChar(11)
   admin     Boolean
 
-  pauta Pauta[]
-  voto Voto[]
+  pauta        Pauta[]
+  voto         Voto[]
+  Autenticacao Autenticacao?
 }
 
 model Pauta {
-  id        Int       @id @default(autoincrement())
-  assunto   String
-  categoria Categoria
-  sessaoVotacaoId Int      @unique
+  id              Int       @id @default(autoincrement())
+  assunto         String
+  categoria       Categoria
+  sessaoVotacaoId Int       @unique
   usuarioId       Int
-  createdAt       DateTime @default(now())
+  createdAt       DateTime  @default(now())
 
   usuario       Usuario        @relation(fields: [usuarioId], references: [id])
   sessaoVotacao SessaoVotacao?
@@ -64,9 +68,9 @@ model SessaoVotacao {
   pauta Pauta @relation(fields: [pautaId], references: [id], onDelete: Cascade)
 }
 
-model Voto{
-  id Int @id @default(autoincrement())
-  cpf String @db.VarChar(11)
+model Voto {
+  id        Int    @id @default(autoincrement())
+  cpf       String @db.VarChar(11)
   usuarioId Int?
 
   usuario Usuario? @relation(fields: [usuarioId], references: [id])

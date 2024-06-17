@@ -4,6 +4,7 @@ CREATE TYPE "Categoria" AS ENUM ('TRANSPORTE', 'EDUCACAO', 'SAUDE', 'MORADIA', '
 -- CreateTable
 CREATE TABLE "Autenticacao" (
     "id" SERIAL NOT NULL,
+    "usuarioId" INTEGER NOT NULL,
     "email" TEXT NOT NULL,
     "senha" TEXT NOT NULL,
 
@@ -53,13 +54,22 @@ CREATE TABLE "Voto" (
 );
 
 -- CreateIndex
+CREATE UNIQUE INDEX "Autenticacao_usuarioId_key" ON "Autenticacao"("usuarioId");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "Autenticacao_email_key" ON "Autenticacao"("email");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Usuario_cpf_key" ON "Usuario"("cpf");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Pauta_sessaoVotacaoId_key" ON "Pauta"("sessaoVotacaoId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "SessaoVotacao_pautaId_key" ON "SessaoVotacao"("pautaId");
+
+-- AddForeignKey
+ALTER TABLE "Autenticacao" ADD CONSTRAINT "Autenticacao_usuarioId_fkey" FOREIGN KEY ("usuarioId") REFERENCES "Usuario"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Pauta" ADD CONSTRAINT "Pauta_usuarioId_fkey" FOREIGN KEY ("usuarioId") REFERENCES "Usuario"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
