@@ -1,10 +1,10 @@
-import { Autenticacao, Usuario } from "@prisma/client";
+import { Usuario } from "@prisma/client";
 import { usuarioRepository } from "../../../repositories/usuario";
-import { CriarUsuarioDto } from "../../dto/usuario/criarUsuarioDto";
+import { CriarUsuarioDto } from "../../dto/usuario/CriarUsuarioDto";
 import { classValidatorValidacoes } from "../../validacoes/classValidator/classValidatorValidacoes";
 import { usuarioValidacoes } from "../../validacoes/usuario/usuarioValiacoes";
 import { autenticacaoService } from "../autenticacao";
-import { CriarUsuarioRespostaDto } from "../../dto/usuario/criarUsuarioRespostaDto";
+import { CriarUsuarioRespostaDto } from "../../dto/usuario/CriarUsuarioRespostaDto";
 import { autenticacaoValidacoes } from "../../validacoes/autenticacao/autenticacaoValidacoes";
 
 

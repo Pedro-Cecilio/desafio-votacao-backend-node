@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { plainToClass } from "class-transformer";
-import { CriarUsuarioDto } from "../../shared/dto/usuario/criarUsuarioDto";
+import { CriarUsuarioDto } from "../../shared/dto/usuario/CriarUsuarioDto";
 import { UsuarioService } from "../../shared/services/usuario";
 
 export const criar = async (request: FastifyRequest, reply: FastifyReply) => {

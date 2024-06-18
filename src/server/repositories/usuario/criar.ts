@@ -1,5 +1,5 @@
 import { Usuario } from "@prisma/client"
-import { CriarUsuarioDto } from "../../shared/dto/usuario/criarUsuarioDto"
+import { CriarUsuarioDto } from "../../shared/dto/usuario/CriarUsuarioDto"
 import { prisma } from "../../database/database"
 
 export const criar = async (dados: CriarUsuarioDto, senhaEncriptada: string): Promise<Usuario> =>{
