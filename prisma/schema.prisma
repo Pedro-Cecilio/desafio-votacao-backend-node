@@ -51,12 +51,12 @@ model Pauta {
   id              Int       @id @default(autoincrement())
   assunto         String
   categoria       Categoria
-  sessaoVotacaoId Int       @unique
+  sessaoVotacaoId Int?       
   usuarioId       Int
   createdAt       DateTime  @default(now())
 
   usuario       Usuario        @relation(fields: [usuarioId], references: [id])
-  sessaoVotacao SessaoVotacao?
+  sessaoVotacao SessaoVotacao? 
 }
 
 model SessaoVotacao {

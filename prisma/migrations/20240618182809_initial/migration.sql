@@ -27,7 +27,7 @@ CREATE TABLE "Pauta" (
     "id" SERIAL NOT NULL,
     "assunto" TEXT NOT NULL,
     "categoria" "Categoria" NOT NULL,
-    "sessaoVotacaoId" INTEGER NOT NULL,
+    "sessaoVotacaoId" INTEGER,
     "usuarioId" INTEGER NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
@@ -61,9 +61,6 @@ CREATE UNIQUE INDEX "Autenticacao_email_key" ON "Autenticacao"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Usuario_cpf_key" ON "Usuario"("cpf");
-
--- CreateIndex
-CREATE UNIQUE INDEX "Pauta_sessaoVotacaoId_key" ON "Pauta"("sessaoVotacaoId");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "SessaoVotacao_pautaId_key" ON "SessaoVotacao"("pautaId");
