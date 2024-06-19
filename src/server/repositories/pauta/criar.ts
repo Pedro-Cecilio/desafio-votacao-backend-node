@@ -1,7 +1,8 @@
 import { prisma } from "../../database/database";
 import { CriarPautaDto } from "../../shared/dto/pauta/CriarPautaDto";
+import { PautaCompleta } from "../../shared/interface/pauta/PautaCompleta";
 
-export const criar = async (dados: CriarPautaDto, usuarioId: number) => {
+export const criar = async (dados: CriarPautaDto, usuarioId: number) : Promise<PautaCompleta> => {
     return prisma.pauta.create({
         data:{
             assunto:dados.assunto,
@@ -14,6 +15,7 @@ export const criar = async (dados: CriarPautaDto, usuarioId: number) => {
         },
         include:{
             usuario: true,
+            sessaoVotacao: true
         }
     })
 }
