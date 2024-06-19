@@ -1,5 +1,5 @@
 import { FastifyReply, HookHandlerDoneFunction } from "fastify";
-import { FastifyRequestVotacao } from "../shared/interface/FastifyRequestVotacao";
+import { FastifyRequestVotacao } from "../shared/interface/fastify/FastifyRequestVotacao";
 import { Usuario } from "@prisma/client";
 import { usuarioRepository } from "../repositories/usuario";
 

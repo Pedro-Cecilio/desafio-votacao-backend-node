@@ -1,7 +1,7 @@
 import { FastifyReply, HookHandlerDoneFunction } from "fastify";
 import jwt from 'jsonwebtoken';
-import { PayloadJwt } from "../shared/interface/PayloadJwt";
-import { FastifyRequestVotacao } from "../shared/interface/FastifyRequestVotacao";
+import { PayloadJwt } from "../shared/interface/jwt/PayloadJwt";
+import { FastifyRequestVotacao } from "../shared/interface/fastify/FastifyRequestVotacao";
 
 
 export const verificarToken = (request: FastifyRequestVotacao, reply: FastifyReply, done: HookHandlerDoneFunction) => {

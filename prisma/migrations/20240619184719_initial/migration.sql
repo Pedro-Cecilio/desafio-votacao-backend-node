@@ -1,6 +1,9 @@
 -- CreateEnum
 CREATE TYPE "Categoria" AS ENUM ('TRANSPORTE', 'EDUCACAO', 'SAUDE', 'MORADIA', 'MEIO_AMBIENTE', 'CULTURA_LAZER', 'SEGURANCA', 'EMPREGO', 'SERVICOS_PUBLICOS', 'ASSUNTOS_GERAIS');
 
+-- CreateEnum
+CREATE TYPE "TipoDeVoto" AS ENUM ('POSITIVO', 'NEGATIVO');
+
 -- CreateTable
 CREATE TABLE "Autenticacao" (
     "id" SERIAL NOT NULL,
@@ -27,7 +30,6 @@ CREATE TABLE "Pauta" (
     "id" SERIAL NOT NULL,
     "assunto" TEXT NOT NULL,
     "categoria" "Categoria" NOT NULL,
-    "sessaoVotacaoId" INTEGER,
     "usuarioId" INTEGER NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
@@ -48,6 +50,8 @@ CREATE TABLE "SessaoVotacao" (
 CREATE TABLE "Voto" (
     "id" SERIAL NOT NULL,
     "cpf" VARCHAR(11) NOT NULL,
+    "tipoDeVoto" "TipoDeVoto" NOT NULL,
+    "sessaoVotacaoId" INTEGER NOT NULL,
     "usuarioId" INTEGER,
 
     CONSTRAINT "Voto_pkey" PRIMARY KEY ("id")
@@ -76,3 +80,6 @@ ALTER TABLE "SessaoVotacao" ADD CONSTRAINT "SessaoVotacao_pautaId_fkey" FOREIGN 
 
 -- AddForeignKey
 ALTER TABLE "Voto" ADD CONSTRAINT "Voto_usuarioId_fkey" FOREIGN KEY ("usuarioId") REFERENCES "Usuario"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "Voto" ADD CONSTRAINT "Voto_sessaoVotacaoId_fkey" FOREIGN KEY ("sessaoVotacaoId") REFERENCES "SessaoVotacao"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

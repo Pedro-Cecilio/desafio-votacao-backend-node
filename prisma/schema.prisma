@@ -26,6 +26,11 @@ enum Categoria {
   ASSUNTOS_GERAIS
 }
 
+enum TipoDeVoto {
+  POSITIVO
+  NEGATIVO
+}
+
 model Autenticacao {
   id        Int    @id @default(autoincrement())
   usuarioId Int    @unique
@@ -51,12 +56,11 @@ model Pauta {
   id              Int       @id @default(autoincrement())
   assunto         String
   categoria       Categoria
-  sessaoVotacaoId Int?       
   usuarioId       Int
   createdAt       DateTime  @default(now())
 
   usuario       Usuario        @relation(fields: [usuarioId], references: [id])
-  sessaoVotacao SessaoVotacao? 
+  sessaoVotacao SessaoVotacao?
 }
 
 model SessaoVotacao {
@@ -65,13 +69,18 @@ model SessaoVotacao {
   dataAbertura   DateTime
   dataFechamento DateTime
 
-  pauta Pauta @relation(fields: [pautaId], references: [id], onDelete: Cascade)
+  votos Voto[]
+  pauta Pauta  @relation(fields: [pautaId], references: [id], onDelete: Cascade)
 }
 
 model Voto {
-  id        Int    @id @default(autoincrement())
-  cpf       String @db.VarChar(11)
-  usuarioId Int?
+  id              Int    @id @default(autoincrement())
+  cpf             String @db.VarChar(11)
+  tipoDeVoto TipoDeVoto
+  sessaoVotacaoId Int
+  usuarioId       Int?
 
   usuario Usuario? @relation(fields: [usuarioId], references: [id])
+
+  SessaoVotacao SessaoVotacao @relation(fields: [sessaoVotacaoId], references: [id])
 }
