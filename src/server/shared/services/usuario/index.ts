@@ -1,5 +1,7 @@
+import { buscarPorId } from "./buscarPorId";
 import { criar } from "./criar";
 
-export const UsuarioService = {
-    criar
+export const usuarioService = {
+    criar,
+    buscarPorId
 }
