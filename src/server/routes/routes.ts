@@ -5,6 +5,8 @@ import { verificarToken } from '../middleware/verificar-token'
 import { validarAdmin } from '../middleware/validar-admin'
 import { PautaController } from '../controllers/pauta'
 import { SessaoVotacaoController } from '../controllers/sessaoVotacao'
+import { votoController } from '../controllers/voto'
+import { validarUsuario } from '../middleware/validar-usuario'
 
 
 export async function routes(app: FastifyInstance) {
@@ -22,4 +24,8 @@ export async function routes(app: FastifyInstance) {
     app.post('/sessaoVotacao', {
         preHandler: [verificarToken, validarAdmin]
     }, SessaoVotacaoController.abrir)
+
+    app.post('/votoInterno', {
+        preHandler: [verificarToken, validarUsuario]
+    }, votoController.votoInterno)
 }
