@@ -28,4 +28,6 @@ export async function routes(app: FastifyInstance) {
     app.post('/votoInterno', {
         preHandler: [verificarToken, validarUsuario]
     }, votoController.votoInterno)
+
+    app.post('/votoExterno', votoController.votoExterno)
 }
