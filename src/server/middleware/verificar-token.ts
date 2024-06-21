@@ -5,14 +5,19 @@ import { FastifyRequestVotacao } from "../shared/interface/fastify/FastifyReques
 
 
 export const verificarToken = (request: FastifyRequestVotacao, reply: FastifyReply, done: HookHandlerDoneFunction) => {
-    const key: string = process.env.JWT_SECRET!
-    const authorization: string = request.headers.authorization ?? ""
+    const chave: string = process.env.JWT_SECRET!
+    const token : string = obterToken(request)
     try {
-        const token = authorization.split(" ")[1]
-        const payload = jwt.verify(token, key) as PayloadJwt
-        request.dadosToken = payload
+        const dados = jwt.verify(token, chave) as PayloadJwt
+        request.dadosToken = dados
+        done()
     } catch (error) {
         reply.status(401).send()
     }
-    done()
+    
+}
+
+export const obterToken = (request: FastifyRequestVotacao): string => {
+    const authorization: string = request.headers.authorization ?? ""
+    return authorization.split(" ")[1]
 }

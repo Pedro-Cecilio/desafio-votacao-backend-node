@@ -6,9 +6,9 @@ export const validarUsuario = async (request: FastifyRequestVotacao, reply: Fast
     try {
         const id = request.dadosToken!.userId;
         await usuarioRepository.buscarPorId(id)
+        done()
     } catch (error) {
         reply.status(401).send()
     }
 
-    done()
 }

@@ -3,7 +3,7 @@ import { app } from "./app";
 const port: number = 3000
 
 app.listen({
-    port: 3000
+    port,
 }, (erro: Error | null, address: string)=>{
     if (erro) {
         app.log.error(erro)

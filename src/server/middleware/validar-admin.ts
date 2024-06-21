@@ -4,7 +4,7 @@ import { Usuario } from "@prisma/client";
 import { usuarioRepository } from "../repositories/usuario";
 import { ValidacaoErro } from "../shared/exececoes/erros";
 
-export const validarAdmin = async (request: FastifyRequestVotacao, reply: FastifyReply, done: HookHandlerDoneFunction) => {
+export const validarAdmin = async (request: FastifyRequestVotacao, reply: FastifyReply) => {
     try {
         const id = request.dadosToken!.userId;
         const usuario: Usuario = await usuarioRepository.buscarPorId(id)
@@ -12,5 +12,4 @@ export const validarAdmin = async (request: FastifyRequestVotacao, reply: Fastif
     } catch (error) {
         reply.status(401).send()
     }
-    done()
 }
