@@ -11,7 +11,15 @@ const listaPautaCompletaToListaRespostaPautaDto = (pautas: PautaCompleta[]): Res
         return new RespostaPautaDto(pauta.id, pauta.assunto, pauta.categoria, usuarioRepostaDto, respostaSessaoVotacao)
     })
 }
+const pautaCompletaToRespostaPautaDto = (pauta: PautaCompleta): RespostaPautaDto => {
+    const usuarioRepostaDto: UsuarioRespostaDto = plainToClass(UsuarioRespostaDto, pauta.usuario)
+    const respostaSessaoVotacao = sessaoVotacaoMapper.sessaoVotacaoCompletaToSessaoVotacaoRespostaDto(pauta.sessaoVotacao)
+    return new RespostaPautaDto(pauta.id, pauta.assunto, pauta.categoria, usuarioRepostaDto, respostaSessaoVotacao)
+}
+
+
 
 export const pautaMapper = {
-    listaPautaCompletaToListaRespostaPautaDto
+    listaPautaCompletaToListaRespostaPautaDto,
+    pautaCompletaToRespostaPautaDto
 }
