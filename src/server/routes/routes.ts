@@ -1,4 +1,4 @@
-import { FastifyInstance } from 'fastify'
+import { FastifyInstance, FastifySchema } from 'fastify'
 import { UsuarioController } from '../controllers/usuario'
 import { AutenticacaoController } from '../controllers/autenticacao'
 import { verificarToken } from '../middleware/verificar-token'
@@ -26,6 +26,8 @@ export async function routes(app: FastifyInstance) {
     app.get('/pautas/ativas', {
         preHandler: [verificarToken, validarUsuario]
     }, PautaController.buscarAtivas)
+
+    app.get('/pautas/:id', PautaController.buscarAtivaPorId)
 
 
     app.post('/sessaoVotacao', {

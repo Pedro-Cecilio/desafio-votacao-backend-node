@@ -1,3 +1,4 @@
+import { buscarAtivaPorId } from "./buscarAtivaPorId";
 import { buscarAtivas } from "./buscarAtivas";
 import { buscarPorUsuarioId } from "./buscarPorUsuarioId";
 import { criar } from "./criar";
@@ -5,5 +6,6 @@ import { criar } from "./criar";
 export const PautaController = {
     criar,
     buscarPorUsuarioId,
-    buscarAtivas
+    buscarAtivas,
+    buscarAtivaPorId
 }
