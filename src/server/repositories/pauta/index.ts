@@ -1,3 +1,4 @@
+import { buscarAtivas } from "./buscarAtivas";
 import { buscarPorIdEUsuarioId } from "./buscarPorIdEUsuarioId";
 import { buscarPorUsuarioId } from "./buscarPorUsuarioId";
 import { criar } from "./criar";
@@ -5,5 +6,6 @@ import { criar } from "./criar";
 export const pautaRepository = {
     criar,
     buscarPorIdEUsuarioId,
-    buscarPorUsuarioId
+    buscarPorUsuarioId,
+    buscarAtivas
 }
