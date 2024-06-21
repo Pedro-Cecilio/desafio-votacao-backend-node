@@ -1,6 +1,7 @@
-import { Pauta, SessaoVotacao, Usuario } from "@prisma/client";
+import { Pauta, Usuario } from "@prisma/client";
+import { SessaoVotacaoCompleta } from "../sessaoVotacao/SessaoVotacaoCompleta";
 
 export interface PautaCompleta extends Pauta{
     usuario: Usuario
-    sessaoVotacao: SessaoVotacao | null
+    sessaoVotacao: SessaoVotacaoCompleta | null
 }

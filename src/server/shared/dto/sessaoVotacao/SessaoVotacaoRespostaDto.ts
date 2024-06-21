@@ -1,7 +1,8 @@
 import { TipoDeVoto, Voto } from "@prisma/client"
+import { SessaoVotacaoCompleta } from "../../interface/sessaoVotacao/SessaoVotacaoCompleta"
 
-export class VotoRespostaDto {
-    sessaoVotacaoId: number
+export class SessaoVotacaoRespostaDto {
+    id: number
     pautaId: number
     votosPositivos: number
     votosNegativos: number
@@ -9,19 +10,14 @@ export class VotoRespostaDto {
     dataFechamento: Date
     sessaoAtiva: boolean
 
-    public constructor(
-        sessaoVotacaoId: number,
-        pautaId: number,
-        votos: Voto[],
-        dataAbertura: Date,
-        dataFechamento: Date) {
-            this.sessaoVotacaoId = sessaoVotacaoId
-            this.pautaId = pautaId
-            this.votosPositivos = this.setVotosPositos(votos)
-            this.votosNegativos = this.setVotosNegativos(votos)
-            this.dataAbertura = dataAbertura
-            this.dataFechamento = dataFechamento
-            this.sessaoAtiva = this.setSessaoAtiva(dataFechamento)
+    public constructor(dados: SessaoVotacaoCompleta) {
+            this.id = dados.id
+            this.pautaId = dados.pautaId
+            this.votosPositivos = this.setVotosPositos(dados.votos)
+            this.votosNegativos = this.setVotosNegativos(dados.votos)
+            this.dataAbertura = dados.dataAbertura
+            this.dataFechamento = dados.dataFechamento
+            this.sessaoAtiva = this.setSessaoAtiva(dados.dataFechamento)
     }
 
     private setVotosPositos(votos: Voto[]) : number{

@@ -15,7 +15,12 @@ export const criar = async (dados: CriarPautaDto, usuarioId: number) : Promise<P
         },
         include:{
             usuario: true,
-            sessaoVotacao: true
+            sessaoVotacao: {
+                include:{
+                    pauta: true,
+                    votos: true
+                }
+            }
         }
     })
 }
