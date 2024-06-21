@@ -1,6 +1,7 @@
 import { Pauta, Usuario } from "@prisma/client";
 import { SessaoVotacaoCompleta } from "../../interface/sessaoVotacao/SessaoVotacaoCompleta";
 import { ValidacaoErro } from "../../exececoes/erros";
+import { autenticacaoValidacoes } from "../autenticacao/autenticacaoValidacoes";
 
 
 const validarSeUsuarioNaoEDonoDaPauta = (usuario: Usuario, pauta: Pauta)=>{
@@ -15,7 +16,13 @@ const validarSeUsuarioPodeVotarInternamente = (usuario: Usuario, sessaoVotacao: 
     validarSeUsuarioNaoVotou(usuario.cpf, sessaoVotacao)
 }
 
+const validarSePodeVotarExternamente = async (usuario: Usuario | null, senha: string)=>{
+    if(usuario){
+        await autenticacaoValidacoes.validarAutenticacao(usuario, senha)
+    }
+}
 
 export const votoValidacoes = {
-    validarSeUsuarioPodeVotarInternamente
+    validarSeUsuarioPodeVotarInternamente, 
+    validarSePodeVotarExternamente
 }
