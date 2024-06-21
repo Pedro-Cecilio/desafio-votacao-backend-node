@@ -1,18 +1,17 @@
 import { prisma } from "../../database/database"
 import { PautaCompleta } from "../../shared/interface/pauta/PautaCompleta"
 
-export const buscarPorIdEUsuarioId = async (id: number, usuarioId: number): Promise<PautaCompleta> => {
-    return prisma.pauta.findFirstOrThrow({
-        where: {
-            id,
+export const buscarPorUsuarioId = async (usuarioId: number): Promise<PautaCompleta[]>=>{
+    return await prisma.pauta.findMany({
+        where:{
             usuarioId
         },
-        include: {
+        include:{
             usuario: true,
             sessaoVotacao: {
                 include:{
-                    pauta: true,
-                    votos: true
+                    votos: true,
+                    pauta: true
                 }
             }
         }
