@@ -1,8 +1,7 @@
-import { FastifyReply, HookHandlerDoneFunction } from "fastify";
-import { FastifyRequestVotacao } from "../shared/interface/fastify/FastifyRequestVotacao";
+import { FastifyReply, FastifyRequest, HookHandlerDoneFunction } from "fastify";
 import { usuarioRepository } from "../repositories/usuario";
 
-export const validarUsuario = async (request: FastifyRequestVotacao, reply: FastifyReply, done: HookHandlerDoneFunction) => {
+export const validarUsuario = async (request: FastifyRequest, reply: FastifyReply, done: HookHandlerDoneFunction) => {
     try {
         const id = request.dadosToken!.userId;
         await usuarioRepository.buscarPorId(id)

@@ -1,10 +1,9 @@
-import { FastifyReply, HookHandlerDoneFunction } from "fastify";
+import { FastifyReply, FastifyRequest, HookHandlerDoneFunction } from "fastify";
 import jwt from 'jsonwebtoken';
 import { PayloadJwt } from "../shared/interface/jwt/PayloadJwt";
-import { FastifyRequestVotacao } from "../shared/interface/fastify/FastifyRequestVotacao";
 
 
-export const verificarToken = (request: FastifyRequestVotacao, reply: FastifyReply, done: HookHandlerDoneFunction) => {
+export const verificarToken = (request: FastifyRequest, reply: FastifyReply, done: HookHandlerDoneFunction) => {
     const chave: string = process.env.JWT_SECRET!
     const token : string = obterToken(request)
     try {
@@ -17,7 +16,7 @@ export const verificarToken = (request: FastifyRequestVotacao, reply: FastifyRep
     
 }
 
-export const obterToken = (request: FastifyRequestVotacao): string => {
+export const obterToken = (request: FastifyRequest): string => {
     const authorization: string = request.headers.authorization ?? ""
     return authorization.split(" ")[1]
 }
