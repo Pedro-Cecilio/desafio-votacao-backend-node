@@ -20,11 +20,14 @@ export async function routes(app: FastifyInstance) {
     app.post('/pautas', {
         preHandler: [verificarToken, validarAdmin]
     }, PautaController.criar)
-
     app.get("/pautas", {
         preHandler: [verificarToken, validarAdmin]
     }, PautaController.buscarPorUsuarioId)
-    
+    app.get('/pautas/ativas', {
+        preHandler: [verificarToken, validarUsuario]
+    }, PautaController.buscarAtivas)
+
+
     app.post('/sessaoVotacao', {
         preHandler: [verificarToken, validarAdmin]
     }, SessaoVotacaoController.abrir)
