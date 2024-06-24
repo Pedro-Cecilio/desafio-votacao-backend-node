@@ -8,9 +8,9 @@ export class CriarUsuarioDto {
     @IsNotEmpty({ message: "AutenticacaoDto deve ser informado." })
     public readonly autenticacaoDto: AutenticacaoDto
 
-    @IsNotEmpty({ message: "Nome deve ser informado." })
-    @IsString({ message: "Nome deve ser uma string." })
     @Length(3, 20, { message: "Nome deve conter entre 3 e 20 caracteres." })
+    @IsString({ message: "Nome deve ser uma string." })
+    @IsNotEmpty({ message: "Nome deve ser informado."})
     public readonly nome: string;
 
     @Length(2, 20, { message: "Sobrenome deve conter entre 2 e 20 caracteres." })
@@ -20,6 +20,7 @@ export class CriarUsuarioDto {
 
     @Matches(/\d{11}/, { message: "CPF deve conter 11 caracteres numéricos." })
     @IsString({ message: "CPF deve ser uma string." })
+    @IsNotEmpty({ message: "Cpf deve ser informado."})
     public readonly cpf: string;
 
     @IsBoolean({ message: "Admin deve ser um boolean." })
