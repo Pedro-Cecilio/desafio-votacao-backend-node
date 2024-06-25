@@ -3,8 +3,8 @@ import { pautaService } from "../../../../../src/server/shared/services/pauta"
 import { pautaRepositoryMock } from "../../../../__mocks__/pauta/repository/repositoryMock"
 import { PautaCompletaFixture } from "../../../../fixture/pauta/PautaCompletaFixture"
 
-describe("Pauta service - buscarPorIdEUsuarioId", () => {
-    it("Deve ser possível buscar pauta por Id E UsuarioId", async () => {
+describe("Pauta service - buscarAtivas", () => {
+    it("Deve ser possível buscar todas pautas ativas", async () => {
         const dados: PautaCompleta[] = PautaCompletaFixture.listaPautaCompleta()
         pautaRepositoryMock.buscarAtivasMock(dados)
 
@@ -12,7 +12,5 @@ describe("Pauta service - buscarPorIdEUsuarioId", () => {
 
         expect(resposta.length).toBe(dados.length)
     })
-
-
 
 })

@@ -18,10 +18,18 @@ const buscarAtivasMock = (dados: PautaCompleta[]) => {
     jest.spyOn(pautaRepository, "buscarAtivas").mockResolvedValue(dados)
 }
 
+const buscarAtivaPorIdSucessoMock = (dados: PautaCompleta) => {
+    jest.spyOn(pautaRepository, "buscarAtivaPorId").mockResolvedValue(dados)
+}
+const buscarAtivaPorIdFalhaMock = () => {
+    jest.spyOn(pautaRepository, "buscarAtivaPorId").mockRejectedValue(null)
+}
 export const pautaRepositoryMock = {
     criarMock,
     buscarPorUsuarioIdMock,
     buscarPorIdEUsuarioIdSucessoMock,
     buscarPorIdEUsuarioIdFalhaMock,
-    buscarAtivasMock
+    buscarAtivasMock,
+    buscarAtivaPorIdSucessoMock,
+    buscarAtivaPorIdFalhaMock
 }
