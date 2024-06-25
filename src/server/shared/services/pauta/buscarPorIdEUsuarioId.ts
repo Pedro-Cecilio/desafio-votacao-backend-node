@@ -6,6 +6,6 @@ export const buscarPorIdEUsuarioId = async (id: number, usuarioid: number): Prom
     try {
         return await pautaRepository.buscarPorIdEUsuarioId(id, usuarioid)
     } catch (error) {
-        throw new NaoEncontradoErro("Pauta não encontrada")
+        throw new NaoEncontradoErro("Pauta não encontrada.")
     }
 }

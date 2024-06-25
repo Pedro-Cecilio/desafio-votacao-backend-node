@@ -6,7 +6,7 @@ import { PautaCompletaFixture } from "../../../../fixture/pauta/PautaCompletaFix
 describe("Pauta service - buscarPorUsuarioId", () => {
     it("Deve ser possível buscar todas pautas por usuarioId", async () => {
        const repostaRepositoryMock: PautaCompleta[] = PautaCompletaFixture.listaPautaCompleta()
-       pautaRepositoryMock.buscarPorUsuarioId(repostaRepositoryMock)
+       pautaRepositoryMock.buscarPorUsuarioIdMock(repostaRepositoryMock)
 
        const resposta = await pautaService.buscarPorUsuarioId(1)
 

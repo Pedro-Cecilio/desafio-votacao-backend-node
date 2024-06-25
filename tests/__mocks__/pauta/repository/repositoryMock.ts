@@ -1,13 +1,21 @@
-import {pautaRepository} from "../../../../src/server/repositories/pauta"
+import { pautaRepository } from "../../../../src/server/repositories/pauta"
 import { PautaCompleta } from "../../../../src/server/shared/interface/pauta/PautaCompleta"
 
-const criarMock = (dados: PautaCompleta)=>{
+const criarMock = (dados: PautaCompleta) => {
     jest.spyOn(pautaRepository, "criar").mockResolvedValue(dados)
 }
-const buscarPorUsuarioId = (dados: PautaCompleta[]) => {
+const buscarPorUsuarioIdMock = (dados: PautaCompleta[]) => {
     jest.spyOn(pautaRepository, "buscarPorUsuarioId").mockResolvedValue(dados)
+}
+const buscarPorIdEUsuarioIdSucessoMock = (dados: PautaCompleta) => {
+    jest.spyOn(pautaRepository, "buscarPorIdEUsuarioId").mockResolvedValue(dados)
+}
+const buscarPorIdEUsuarioIdFalhaMock = () => {
+    jest.spyOn(pautaRepository, "buscarPorIdEUsuarioId").mockRejectedValue(null)
 }
 export const pautaRepositoryMock = {
     criarMock,
-    buscarPorUsuarioId
+    buscarPorUsuarioIdMock,
+    buscarPorIdEUsuarioIdSucessoMock,
+    buscarPorIdEUsuarioIdFalhaMock
 }
