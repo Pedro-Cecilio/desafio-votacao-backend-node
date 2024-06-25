@@ -3,6 +3,7 @@ import { CriarUsuarioDto } from "../../../src/server/shared/dto/usuario/CriarUsu
 import { fakerPT_BR } from "@faker-js/faker";
 import * as cpf from "@fnando/cpf"
 export class UsuarioFixture{
+    public static CPF_ALEATORIO: string = cpf.generate();
     public static criarComDto(dados: CriarUsuarioDto): Usuario{
         return {
             id: 1,

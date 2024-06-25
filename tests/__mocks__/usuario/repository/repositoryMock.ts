@@ -16,9 +16,17 @@ const buscarPorIdFalha = () => {
         throw new Error()
     })
 }
+const buscarPorCpfSucesso = (dados: Usuario) => {
+    jest.spyOn(usuarioRepository, "buscarPorCpf").mockResolvedValue(dados)
+}
+const buscarPorCpfFalha = () => {
+    jest.spyOn(usuarioRepository, "buscarPorCpf").mockResolvedValue(null)
+}
 
 export const usuarioRepositoryMock = {
     criar,
     buscarPorIdSucesso,
-    buscarPorIdFalha
+    buscarPorIdFalha,
+    buscarPorCpfSucesso,
+    buscarPorCpfFalha
 }
