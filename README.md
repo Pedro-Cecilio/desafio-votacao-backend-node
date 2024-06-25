@@ -60,6 +60,10 @@ O objetivo principal da VotaçãoApp é fornecer uma plataforma para administrad
       npm run dev
       ```
 
+### Conta Admin Padrão
+A aplicação já possui uma conta admin cadastrada com os seguintes dados de acesso:
+- **Email:** admin@email.com
+- **Senha:** admin123
 
 ### Executar testes:
   ```bash
