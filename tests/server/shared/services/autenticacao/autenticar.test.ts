@@ -7,7 +7,7 @@ import { autenticacaoService } from "../../../../../src/server/shared/services/a
 import { AutenticacaoDto } from "../../../../../src/server/shared/dto/autenticacao/AutenticacaoDto"
 import { AutenticacaoDtoFixture } from "../../../../fixture/autenticacao/AutenticacaoDtoFIxture"
 
-describe("Service de Autenticar - autenticar", () => {
+describe("Autenticacao Service  - autenticar", () => {
     it("Deve ser possível se autenticar com sucesso", async () => {
         const autenticacaoCompleta: AutenticacaoCompleta = AutenticacaoCompletaFixture.criar()
         const dto: AutenticacaoDto = AutenticacaoDtoFixture.dadosValidos()
