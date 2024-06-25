@@ -1,6 +1,6 @@
 import { CriarUsuarioDto } from "../../../../../src/server/shared/dto/usuario/CriarUsuarioDto"
 import { usuarioService } from "../../../../../src/server/shared/services/usuario"
-import { autenticacaoServiceMock } from "../../../../__mocks__/autenticacao/services/autenticacaoServiceMock"
+import { autenticacaoServiceMock } from "../../../../__mocks__/autenticacao/services/serviceMock"
 import { validacoesAutenticacaoMock } from "../../../../__mocks__/autenticacao/validacoes/validacoesMock"
 import { usuarioRepositoryMock } from "../../../../__mocks__/usuario/repository/repositoryMock"
 import { validacoesUsuarioMock } from "../../../../__mocks__/usuario/validacoes/validacoesMock"
