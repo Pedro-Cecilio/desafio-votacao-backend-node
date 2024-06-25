@@ -6,7 +6,7 @@ export class CriarPautaDto {
     @IsNotEmpty({ message: "Assunto deve ser informado." })
     assunto: string;
 
-    @IsNotEmpty({ message: "Categoria deve ser informada." })
     @IsEnum(Categoria, {message: "Categoria inválida."})
+    @IsNotEmpty({ message: "Categoria deve ser informada." })
     categoria: Categoria
 }
