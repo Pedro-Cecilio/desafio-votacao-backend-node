@@ -4,7 +4,10 @@ import { PautaCompleta } from "../../../../src/server/shared/interface/pauta/Pau
 const criarMock = (dados: PautaCompleta)=>{
     jest.spyOn(pautaRepository, "criar").mockResolvedValue(dados)
 }
-
+const buscarPorUsuarioId = (dados: PautaCompleta[]) => {
+    jest.spyOn(pautaRepository, "buscarPorUsuarioId").mockResolvedValue(dados)
+}
 export const pautaRepositoryMock = {
-    criarMock
+    criarMock,
+    buscarPorUsuarioId
 }

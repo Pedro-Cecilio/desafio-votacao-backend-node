@@ -5,7 +5,5 @@ import { pautaMapper } from "../../mappers/PautaMapper"
 
 export const buscarPorUsuarioId = async (usuarioId: number): Promise<RespostaPautaDto[]> => {
     const pautas: PautaCompleta[] = await pautaRepository.buscarPorUsuarioId(usuarioId)
-    const resposta: RespostaPautaDto[] = pautaMapper.listaPautaCompletaToListaRespostaPautaDto(pautas)
-
-    return resposta;
+    return pautaMapper.listaPautaCompletaToListaRespostaPautaDto(pautas)
 }
