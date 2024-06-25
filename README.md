@@ -23,3 +23,45 @@ O objetivo principal da VotaçãoApp é fornecer uma plataforma para administrad
 - class-validator e class-transformer: Bibliotecas para validação e transformação de objetos.
 - moment: Biblioteca para manipulação de datas e horários.
 - faker-js: Geração de dados falsos para testes e desenvolvimento.
+
+
+### Como Usar
+1. **Clonar repositório**:
+     ```bash
+    git clone https://github.com/Pedro-Cecilio/desafio-votacao-backend-node.git
+    ```
+2. **Acessar raiz do projeto**
+3. **Instalar depencências do projeto**
+   ```bash
+    npm i
+    ```
+4. **Crie um banco de dados postgres**
+5. **Configurar .env**:
+     - Encontre o arquivo .env.example, e a partir dele crie um arquivo .env.
+     ```env
+        DATABASE_URL=postgres://user:password@localhost:5432/mydatabase
+        JWT_SECRET=your_jwt_secret_key
+      ```
+     - Substritua os seguintes dados por dados do seu respectivo banco de dados.
+         - user: usuário de acesso ao seu postgres
+         - password: senha de acesso ao seu postgres
+         - mydatabase: Nome do banco de dados
+         - your_jwt_secret_key: Senha desejada, para que seja inserida nos jwt gerados por essa aplicação.
+6. **Rode as migrations no seu banco de dados configurado**
+     ```bash
+      npx prisma migrate deploy
+      ```
+7. **Atualize o schema prisma**
+     ```bash
+      npx prisma generate
+      ```
+8. **Executar aplicação**:
+     ```bash
+      npm run dev
+      ```
+
+
+### Executar testes:
+  ```bash
+      npm run test
+  ```
