@@ -13,6 +13,6 @@ describe("Service de usuário - buscarPorCpf", () => {
     it('Não deve encontrar usuário ao buscar por cpf', async () => {
         usuarioRepositoryMock.buscarPorCpfFalha()
         const resposta = await usuarioService.buscarPorCpf(UsuarioFixture.CPF_ALEATORIO)
-        expect(resposta).not.toBeNull()
+        expect(resposta).toBeNull()
     })
 })
